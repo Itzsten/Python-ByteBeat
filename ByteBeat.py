@@ -12,7 +12,8 @@ class Infix(object):
 	def __ror__(self, other): return Infix(partial(self.func, other))
 	def __call__(self, v1, v2): return self.func(v1, v2)
 LPSTR,BYTE,WORD,UINT,DWORD,HANDLE=ctypes.c_char_p,ctypes.c_byte,ctypes.c_ushort,ctypes.c_uint,ctypes.c_ulong,ctypes.c_void_p
-HWAVEOUT,LPHWAVEOUT = HANDLE,POINTER(HWAVEOUT)
+HWAVEOUT = HANDLE
+LPHWAVEOUT = POINTER(HWAVEOUT)
 winmm = ctypes.windll.Winmm
 waveOutOpen,waveOutPrepareHeader,waveOutWrite,waveOutUnprepareHeader,waveOutClose=winmm.waveOutOpen,winmm.waveOutPrepareHeader,winmm.waveOutWrite,winmm.waveOutUnprepareHeader,winmm.waveOutClose
 WAVE_FORMAT_PCM,WAVE_MAPPER,CALLBACK_NULL=1,-1,0
