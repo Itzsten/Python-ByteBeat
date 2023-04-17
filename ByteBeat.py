@@ -48,6 +48,7 @@ operand_key_fix=Infix(lambda x,y: int(x)|int(y))
 charcodeat_key_fix=Infix(lambda s,y: ord(s[y]))
 operand_gtgt_key_fix=Infix(lambda x,y: int(x)>>int(y))
 operand_ltlt_key_fix=Infix(lambda x, y: int(x)<<int(y))
+operand_and_key_fix=Infix(lambda x, y: int(x)&int(y))
 
 class ByteBeat:
 	def GenerateBuffer(EQUATION, SECONDS_PLAYING, AMOUNT_KILOHERTZ=8000):
@@ -61,7 +62,7 @@ class ByteBeat:
 		@ AMOUNT_KILOHERTZ argument: The amount of kilohertz (kHz) the ByteBeat will use.
 		@ AMOUNT_KILOHERTZ type: int
 		'''
-		EQUATION = EQUATION.replace('^','**').replace('random()','__import__("random").random()').replace('|','|operand_key_fix|').replace('/','|division_key_fix|').replace('?',' if ').replace(':',' else ').replace('.charCodeAt',' |charcodeat_key_fix| ').replace('>>',' |operand_gtgt_key_fix| ').replace('<<',' |operand_ltlt_key_fix| ')
+		EQUATION = EQUATION.replace('^','**').replace('random()','__import__("random").random()').replace('|','|operand_key_fix|').replace('/','|division_key_fix|').replace('?',' if ').replace(':',' else ').replace('.charCodeAt',' |charcodeat_key_fix| ').replace('>>',' |operand_gtgt_key_fix| ').replace('<<',' |operand_ltlt_key_fix| ').replace('&', ' |operand_and_key_fix| ')
 		hWaveOut = HWAVEOUT(0)
 		wfx = WAVEFORMATEX(WAVE_FORMAT_PCM, 1, AMOUNT_KILOHERTZ, AMOUNT_KILOHERTZ, 1, 8,0)
 		waveOutOpen(byref(hWaveOut), WAVE_MAPPER, LPWAVEFORMATEX(wfx), 0, 0, CALLBACK_NULL)
@@ -82,7 +83,7 @@ class ByteBeat:
 		@ ASYNC_SLEEP argument: Wait until the sound playing has finished or not.
 		@ ASYNC_SLEEP type: bool
 		'''
-		EQUATION = EQUATION.replace('^','**').replace('random()','__import__("random").random()').replace('|','|operand_key_fix|').replace('/','|division_key_fix|').replace('?',' if ').replace(':',' else ').replace('.charCodeAt',' |charcodeat_key_fix| ').replace('>>',' |operand_gtgt_key_fix| ').replace('<<',' |operand_ltlt_key_fix| ')
+		EQUATION = EQUATION.replace('^','**').replace('random()','__import__("random").random()').replace('|','|operand_key_fix|').replace('/','|division_key_fix|').replace('?',' if ').replace(':',' else ').replace('.charCodeAt',' |charcodeat_key_fix| ').replace('>>',' |operand_gtgt_key_fix| ').replace('<<',' |operand_ltlt_key_fix| ').replace('&', ' |operand_and_key_fix| ')
 		hWaveOut = HWAVEOUT(0)
 		wfx = WAVEFORMATEX(WAVE_FORMAT_PCM, 1, AMOUNT_KILOHERTZ, AMOUNT_KILOHERTZ, 1, 8,0)
 		winmm.waveOutOpen.argtypes = (LPHWAVEOUT, UINT, LPWAVEFORMATEX, DWORD, DWORD, DWORD) 
