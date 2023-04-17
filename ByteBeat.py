@@ -1,9 +1,9 @@
 import ctypes
 from ctypes import byref, create_string_buffer, c_int, c_long, c_byte, POINTER, sizeof
 from win32api import Sleep
-from numpy import sin, tan, cos, sqrt
+from numpy import sin, tan, cos, sqrt # can remove this
 from math import floor, ceil
-from numpy import log as ln
+from numpy import log as ln # can remove this too
 from functools import partial
 
 class Infix(object):
@@ -43,6 +43,8 @@ WAVEHDR._fields_ = [
 	("reserved", DWORD) 
 ]
 LPWAVEHDR = POINTER(WAVEHDR)
+
+# fixes js only stuff
 division_key_fix=Infix(lambda x,y: x/y if y else 0)
 operand_key_fix=Infix(lambda x,y: int(x)|int(y))
 charcodeat_key_fix=Infix(lambda s,y: ord(s[y]))
