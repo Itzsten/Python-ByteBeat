@@ -5,7 +5,7 @@ from ByteBeat import *
 ByteBeat.Play(
     't%0.81*t', # The mathematical input, as a string.
     10,         # The amount of seconds to play.
-    8000,       # KiloHertz (kHz) for the ByteBeat.
+    8000,       # Hertz (Hz) for the ByteBeat.
     True        # Wait until the ByteBeat finished or not.
 )
 ```
